@@ -6,13 +6,18 @@ div {
   text-align: center;
 }
 
-h1 {
+h1, h3 {
   text-decoration: underline;
   font-weight: bolder;
+  font-size: 75px;
 }
 
 .result {
   text-align: center;
+  font-family: 'Staatliches', cursive;
+  font-size: 50px;
+  background-color: pink;
+  border-radius: 100px;
 }
 .btn {
   margin-top: 2%;
