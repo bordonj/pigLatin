@@ -1,5 +1,6 @@
 let vowels = ['a', 'e', 'i', 'o', 'u'];
-let consonants = ['B', 'C', 'D', 'F', 'G', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'S', 'T', 'V', 'X', 'Z', 'H', 'R', 'W', 'Y'];
+let consonants = ['B', 'C', 'D', 'F', 'G', 'J', 'K', 'L', 'M', 'N', 'P', 'S', 'T', 'V', 'X', 'Z', 'H', 'R', 'W', 'Y'];
+let qu = ["qu"];
 let lowerCon = [];
 let pigSentence = [];
 consonants.forEach(function(consonant) {
@@ -33,5 +34,17 @@ function pigLatinize(sentence) {
         pigSentence.push(vowelCut+consCut+'ay');
       }
     }
+    for (let quWord of qu) {
+      if (senArr[i].slice(0,2) === quWord) {
+        let quCut = senArr[i].slice(0,2);
+        let vowelCut = senArr[i].slice(2)
+        pigSentence.push(vowelCut+quCut+'ay')
+      } else if (senArr[i][0] === !"q") {
+        let quCut = senArr[i].slice(0,1);
+        let vowelCut = senArr[i].slice(1);
+        pigSentence.push(vowelCut+quCut+'ay')
+      }
+    }
   }
+  return pigSentence;
 }
