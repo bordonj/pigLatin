@@ -1,8 +1,8 @@
+//business logic
 let vowels = ['a', 'e', 'i', 'o', 'u'];
 let consonants = ['B', 'C', 'D', 'F', 'G', 'J', 'K', 'L', 'M', 'N', 'P', 'S', 'T', 'V', 'X', 'Z', 'H', 'R', 'W', 'Y'];
 let qu = ["qu"];
 let lowerCon = [];
-let pigSentence = [];
 consonants.forEach(function(consonant) {
   let lowerC = consonant.toLowerCase();
   lowerCon.push(lowerC);
@@ -10,6 +10,7 @@ consonants.forEach(function(consonant) {
 
 
 function pigLatinize(sentence) {
+  let pigSentence = [];
   let senArr = sentence.split(' ');
   for (let i = 0; i < senArr.length; i++) {
     for (let vowel of vowels) {
@@ -48,3 +49,17 @@ function pigLatinize(sentence) {
   }
   return pigSentence;
 }
+
+//UI logic
+$(document).ready(function() {
+  $("#entry").submit(function(event) {
+    event.preventDefault();
+    const userInput = ($("#userInput").val()).toLowerCase();
+
+    let result = pigLatinize(userInput);
+    str = result.join(' ');
+    $(".result").html(`<h3>Pig-Latin translation:</h3>${str}`);
+
+  
+  })
+})

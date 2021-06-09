@@ -1,3 +1,19 @@
 div {
   margin: 0 2vw;
 }
+
+.jumbotron {
+  text-align: center;
+}
+
+h1 {
+  text-decoration: underline;
+  font-weight: bolder;
+}
+
+.result {
+  text-align: center;
+}
+.btn {
+  margin-top: 2%;
+}
