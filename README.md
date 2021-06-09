@@ -1,4 +1,4 @@
-# Specs
+## Specs
 
 ```
 Describe: pigLatinize();
