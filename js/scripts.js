@@ -10,6 +10,9 @@ consonants.forEach(function(consonant) {
 
 function pigLatinize(sentence) {
   let pigSentence = [];
+  if (sentence[sentence.length-1] === '.') {
+    sentence = sentence.slice(0, -1);
+  }
   let senArr = sentence.split(' ');
   for (let i = 0; i < senArr.length; i++) {
     for (let j = 0; j < vowels.length;j++) {
@@ -60,7 +63,7 @@ $(document).ready(function() {
     let result = pigLatinize(userInput);
 
     str = result.join(' ');
-    $(".result").html(`<h3>Pig-Latin translation:</h3>${str}`);
+    $(".result").html(`<h3>Pig-Latin translation:</h3>${str}.`);
 
   
   })
