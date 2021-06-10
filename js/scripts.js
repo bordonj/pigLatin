@@ -10,14 +10,13 @@ consonants.forEach(function(consonant) {
 
 function pigLatinize(sentence) {
   let pigSentence = [];
-  let trashCan = [];
   let senArr = sentence.split(' ');
   for (let i = 0; i < senArr.length; i++) {
     for (let j = 0; j < vowels.length;j++) {
       if (senArr[i][0] === vowels[j]) {
         pigSentence.push(senArr[i]+'way');
       } else {
-        trashCan.push(vowels[j]);
+        continue;
       }
     }
     for (let quWord of qu) {
