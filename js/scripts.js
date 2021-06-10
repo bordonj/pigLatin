@@ -8,31 +8,16 @@ consonants.forEach(function(consonant) {
   lowerCon.push(lowerC);
 })
 
-
 function pigLatinize(sentence) {
   let pigSentence = [];
+  let trashCan = [];
   let senArr = sentence.split(' ');
   for (let i = 0; i < senArr.length; i++) {
-    for (let vowel of vowels) {
-      if (senArr[i][0] === vowel) {
+    for (let j = 0; j < vowels.length;j++) {
+      if (senArr[i][0] === vowels[j]) {
         pigSentence.push(senArr[i]+'way');
-      }
-    }
-    for (let consonant of lowerCon) {
-      if (senArr[i][0] === consonant) {
-        if (senArr[i][1] === consonant) {
-          if (senArr[i][2] === consonant) {
-            let consCut = senArr[i].slice(0, 3);
-            let vowelCut = senArr[i].slice(3);
-            pigSentence.push(vowelCut+consCut+'ay');
-          }
-          let consCut = senArr[i].slice(0, 2);
-          let vowelCut = senArr[i].slice(2);
-          pigSentence.push(vowelCut+consCut+'ay');
-        }
-        let consCut = senArr[i].slice(0, 1);
-        let vowelCut = senArr[i].slice(1);
-        pigSentence.push(vowelCut+consCut+'ay');
+      } else {
+        trashCan.push(vowels[j]);
       }
     }
     for (let quWord of qu) {
@@ -46,6 +31,23 @@ function pigLatinize(sentence) {
         pigSentence.push(vowelCut+quCut+'ay')
       }
     }
+    if (lowerCon.includes(senArr[i][0])) {
+      if (lowerCon.includes(senArr[i][1]) && lowerCon.includes(senArr[i][2])) {
+        let consCut = senArr[i].slice(0, 3);
+        let vowelCut = senArr[i].slice(3);
+        pigSentence.push(vowelCut+consCut+'ay');
+        continue;
+      } else if (lowerCon.includes(senArr[i][0]) && lowerCon.includes(senArr[i][1])) {
+        let consCut = senArr[i].slice(0, 2);
+        let vowelCut = senArr[i].slice(2);
+        pigSentence.push(vowelCut+consCut+'ay');
+        continue;
+        }
+      let consCut = senArr[i].slice(0, 1);
+      let vowelCut = senArr[i].slice(1);
+      pigSentence.push(vowelCut+consCut+'ay');
+    }
+    console.log('pigSentence', pigSentence);
   }
   return pigSentence;
 }
@@ -55,8 +57,9 @@ $(document).ready(function() {
   $("#entry").submit(function(event) {
     event.preventDefault();
     const userInput = ($("#userInput").val()).toLowerCase();
-
+    let str='';
     let result = pigLatinize(userInput);
+
     str = result.join(' ');
     $(".result").html(`<h3>Pig-Latin translation:</h3>${str}`);
 
